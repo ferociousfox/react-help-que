@@ -3,13 +3,20 @@ import PropTypes from 'prop-types'; // needed where PropTypes are declared - und
 
 // the component is a function! the name is capitalized and matches the filename
 function ListItem(props){ // requires "props" parameter to store incoming properties
+  // styles live inside the component they affect
+  var listStyles = {
+    backgroundColor: '#ecf0f1',
+    fontFamily: 'sans-serif',
+    padding: '20px',
+    margin: '5px'
+};
   // the return is JSX that renders content
   return (
-    <div>
+    <div style={listStyles}>
       <h3>ListItem Content</h3>
       <ul>
-        <li>Name: {props.name}</li>
-        <li>Number: {props.number}</li>
+        <li>Name: {props.names}</li>
+        <li>Number: {props.issue}</li>
         <li>Location: {props.location}</li>
       </ul>
     </div>
@@ -18,8 +25,8 @@ function ListItem(props){ // requires "props" parameter to store incoming proper
 
 // import PropTypes at top, then attach propTypes as property to function with an object that has key value pairs for checking types
 ListItem.propTypes = {
-  name: PropTypes.string.isRequired, // this property is required
-  number: PropTypes.string,
+  names: PropTypes.string,
+  issue: PropTypes.string.isRequired, // this property is required
   location: PropTypes.string
 };
 
