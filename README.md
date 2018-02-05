@@ -81,10 +81,30 @@ React functions (components) accept arguments (props) and return a value (React 
 * Pure functions' return values are determined using only provided input values.
 * Pure functions do not ever alter external state or application data.
 
+#### Single Responsibility Principle
+A component should ideally only do one thing. If it ends up growing, it should be decomposed into smaller subcomponents.
+
 __React functions cannot alter their props!__ This would break the second rule above. React components can only take their arguments (props), compose them together into a portion of the UI, and return the JSX results to be rendered.
 
+#### One-Way Data Flow
+React is all about one-way data flow down the component hierarchy, from the lowest common parent component. If you can’t find a component where it makes sense to own the state, create a new component simply for holding the state and add it somewhere in the hierarchy above the common owner component.
+
+#### Inverse Data Flow
+Callbacks fire whenever the state should be updated. onChange event on inputs will be notified of changes. The callbacks passed will call setState(), and the app will be updated.
+
+#### Props
+
+
 #### State
-If a component needs to alter data, that data must be stored in something called state; never a prop. We'll learn about state next week. But for now make sure your components never alter their props. Props are read-only!
+If a component needs to alter data, that data must be stored in something called state; never a prop. We'll learn about state next week. But for now make sure your components never alter their props. Props are read-only! Components should only update their own state. To make your UI interactive, you need to be able to trigger changes to your underlying data model. React makes this easy with state.
+State is never:
+* passed in from a parent via props
+* changes
+* computed based on any other state or props in your component.
+State can be:
+* user input
+* info from APIs
+
 
 ### Components
 Basic building blocks of React apps. Everything in React is a component.
@@ -93,12 +113,16 @@ Basic building blocks of React apps. Everything in React is a component.
 * The component function name always begins with a capital letter and matches the filename.
 * The function returns the JSX this component will render in the browser.
 * Components reside in their own file, and are exported as a module so other areas of the application may import it.
+
 ### Entry Point
 In webpack.config.js, we declared index.jsx as our entry point responsible for loading our application. It does this by loading our parent component. The parent component, in turn, loads child components, which then load their child components, so on, and so forth. This entry point is a special type of file. It is not a component. (Notice its filename is not capitalized, either.) Its sole job is loading the parent component and only the parent component.
+
 ### Passing Data
 React components accept properties (known as props) passed down from a parent. Because React components are functions, these props are a special type of argument.
+
 ### PropTypes
 While declaring PropTypes is technically optional, it's considered best practice. As React applications grow in size, restricting props' types can be hugely beneficial in preventing errors and bugs. Always declare PropTypes for all component properties in your applications.
+
 #### PropTypes List:
 ```
 MyExampleComponent.propTypes = {
