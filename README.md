@@ -13,9 +13,6 @@ Dependencies:
 * npm i react-hot-loader@3.0.0-beta.7 --save-dev
 * npm i html-webpack-plugin@2.29.0 --save-dev
 
-Run Dev Server (localhost:8080):  
-* webpack-dev-server
-
 ### .gitignore
 ```
 .DS_STORE  
