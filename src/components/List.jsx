@@ -1,5 +1,5 @@
-import React from "react"; // always import core React library
-import ListItem from "./ListItem";
+import React from 'react'; // always import core React library
+import ListItem from './ListItem';
 
 // the component is a function! the name is capitalized and matches the filename
 function List(props){

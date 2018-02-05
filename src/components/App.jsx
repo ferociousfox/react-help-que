@@ -1,6 +1,6 @@
-import React from "react"; // always import core React library
-import Header from "./Header";
-import List from "./List";
+import React from 'react'; // always import core React library
+import Header from './Header';
+import List from './List';
 
 function App(props){ // the component is a function! the name is capitalized and matches the filename
   return ( // the return is JSX that renders content

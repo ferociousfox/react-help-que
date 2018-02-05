@@ -12,6 +12,10 @@ Dependencies:
 * npm i webpack-dev-server@2.5.0 --save-dev
 * npm i react-hot-loader@3.0.0-beta.7 --save-dev
 * npm i html-webpack-plugin@2.29.0 --save-dev
+* npm i eslint -g
+* npm i eslint-plugin-react -g
+* eslint --init
+
 
 ### .gitignore
 ```

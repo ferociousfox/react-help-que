@@ -1,4 +1,4 @@
-import React from "react"; // always import core React library
+import React from 'react'; // always import core React library
 
 // the component is a function! the name is capitalized and matches the filename
 function Header(props){

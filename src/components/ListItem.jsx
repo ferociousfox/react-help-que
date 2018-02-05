@@ -1,5 +1,5 @@
-import React from "react"; // always import core React library
-import PropTypes from "prop-types"; // needed where PropTypes are declared - under the function code block
+import React from 'react'; // always import core React library
+import PropTypes from 'prop-types'; // needed where PropTypes are declared - under the function code block
 
 // the component is a function! the name is capitalized and matches the filename
 function ListItem(props){ // requires "props" parameter to store incoming properties
