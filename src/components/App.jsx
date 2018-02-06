@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import NewItemForm from './NewItemForm';
 import Header from './Header';
 import List from './List';
-import reactLogo from '../assets/images/react.svg';
+import reactLogo from '../assets/images/react-logo.svg';
 
 function App(){ // the component is a function! the name is capitalized and matches the filename
   let reactLogoStyle = {
