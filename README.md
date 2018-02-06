@@ -17,7 +17,7 @@ Dependencies:
 * eslint --init
 * npm i eslint-loader --save-dev
 * npm i --save styled-jsx
-
+* npm i react-router-dom@4.0.0 --save
 
 ### .gitignore
 ```
