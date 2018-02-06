@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'; // needed where PropTypes are declared - und
 // the component is a function! the name is capitalized and matches the filename
 function ListItem(props){ // requires "props" parameter to store incoming properties
   // styles live inside the component they affect
-  var listStyles = {
+  let listStyles = {
     backgroundColor: '#ecf0f1',
     fontFamily: 'sans-serif',
     padding: '20px',

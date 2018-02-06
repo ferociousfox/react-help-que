@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
 import { AppContainer } from 'react-hot-loader';
+import { HashRouter } from 'react-router-dom';
 
 // render > creates a component-type const named "render" that acts as entry point for "App"
 // ReactDOM.render akes arguments as: (what, where)
@@ -12,7 +13,9 @@ import { AppContainer } from 'react-hot-loader';
 const render = (Component) => {
   ReactDOM.render(
     <AppContainer>
-      <Component/>
+      <HashRouter>
+        <Component/>
+      </HashRouter>
     </AppContainer>,
     document.getElementById('react-app-root')
   );

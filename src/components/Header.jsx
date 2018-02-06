@@ -1,11 +1,11 @@
-import React from 'react'; // always import core React library
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-// the component is a function! the name is capitalized and matches the filename
 function Header(props){
-  // the return is JSX that renders content
   return (
     <div>
       <h2>Header Content</h2>
+      <Link to="/">Home</Link> | <Link to="/newitem">Create Item</Link>
     </div>
   );
 }

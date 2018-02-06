@@ -2,7 +2,7 @@ import React from 'react'; // always import core React library
 import ListItem from './ListItem';
 
 // hardcoded list
-var masterItemList = [
+let masterItemList = [
   {
     names: 'Thato and Haley',
     location: '3A',

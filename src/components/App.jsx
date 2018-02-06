@@ -1,8 +1,10 @@
 import React from 'react'; // always import core React library
 import Header from './Header';
 import List from './List';
+import { Switch, Route } from 'react-router-dom';
+import NewItemForm from './NewItemForm';
 
-function App(props){ // the component is a function! the name is capitalized and matches the filename
+function App(){ // the component is a function! the name is capitalized and matches the filename
   return ( // the return is JSX that renders content
     <div>
       <style jsx global>{`
@@ -15,7 +17,10 @@ function App(props){ // the component is a function! the name is capitalized and
       <h1>React Prototype</h1>
       <h1>App Content</h1>
       <Header/>
-      <List/>
+      <Switch>
+        <Route exact path='/' component={List} />
+        <Route path='/newitem' component={NewItemForm} />
+      </Switch>
     </div>
   );
 }
