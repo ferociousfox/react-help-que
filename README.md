@@ -1,7 +1,10 @@
 # React Prototype
 ## Setup
 ### terminal
-Dependencies:
+Atom React errors:
+* apm i react@0.16.2
+
+Installation:
 * npm init  
 * npm i react@15.5.4 react-dom@15.5.4 --save  
 * npm i webpack@3.4.0 --save-dev  
@@ -18,6 +21,8 @@ Dependencies:
 * npm i eslint-loader --save-dev
 * npm i --save styled-jsx
 * npm i react-router-dom@4.0.0 --save
+* npm i url-loader@0.6.2 --sav-dev
+* npm i file-loader@1.1.6 --sav-dev
 
 ### .gitignore
 ```

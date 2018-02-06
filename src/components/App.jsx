@@ -1,20 +1,25 @@
 import React from 'react'; // always import core React library
-import Header from './Header';
-import List from './List';
 import { Switch, Route } from 'react-router-dom';
 import NewItemForm from './NewItemForm';
+import Header from './Header';
+import List from './List';
+import reactLogo from '../assets/images/react.svg';
 
 function App(){ // the component is a function! the name is capitalized and matches the filename
+  let reactLogoStyle = {
+    width: 500
+  };
   return ( // the return is JSX that renders content
     <div>
       <style jsx global>{`
         * {
+          text-align: center;
           margin: 0;
           padding: 0;
           box-sizing: border-box;
         }
       `}</style>
-      <h1>React Prototype</h1>
+      <img src={reactLogo} style={reactLogoStyle}/>
       <h1>App Content</h1>
       <Header/>
       <Switch>

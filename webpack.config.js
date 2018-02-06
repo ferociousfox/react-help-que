@@ -39,9 +39,9 @@ module.exports = {
         options: {
           emitWarning: true,
           configFile: "./.eslintrc.json"
-          }
-        },
-        {
+        }
+      },
+      {
         test: /\.jsx?$/,
         loader: "babel-loader",
         exclude: /node_modules/,
@@ -55,10 +55,19 @@ module.exports = {
             "styled-jsx/babel"
           ]
         }
+      },
+      {
+        test: /\.(png|gif|jp(e*)g|svg)$/,
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 8000,
+            name: 'images/[hash]-[name].[ext]'
+          }
+        }
       }
     ]
   },
-
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
@@ -67,6 +76,6 @@ module.exports = {
       appMountId: 'react-app-root', // where the node is
       title: 'React Prototype', // title of new index.html
       filename: resolve(__dirname, "build", "index.html"), // where to save the file
-    }),
+    })
   ]
-};
+}

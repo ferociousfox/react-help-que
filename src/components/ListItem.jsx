@@ -17,6 +17,7 @@ function ListItem(props){ // requires "props" parameter to store incoming proper
         li{
           background-color: peachpuff;
           list-style: none;
+          text-align: left;
         }`}</style>
       <h3>ListItem Content</h3>
       <ul>
