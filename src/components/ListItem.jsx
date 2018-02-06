@@ -9,7 +9,7 @@ function ListItem(props){ // requires "props" parameter to store incoming proper
     fontFamily: 'sans-serif',
     padding: '20px',
     margin: '5px'
-};
+  };
   // the return is JSX that renders content
   return (
     <div style={listStyles}>

@@ -21,7 +21,7 @@ let masterItemList = [
 ];
 
 // the component is a function! the name is capitalized and matches the filename
-function List(props){
+function List(){
   // the return is JSX that renders content
   // map takes an iterated item (object) from an array and corresponding index position
   return (
