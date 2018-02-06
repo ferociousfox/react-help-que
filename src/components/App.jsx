@@ -5,6 +5,13 @@ import List from './List';
 function App(props){ // the component is a function! the name is capitalized and matches the filename
   return ( // the return is JSX that renders content
     <div>
+      <style jsx global>{`
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+      `}</style>
       <h1>React Prototype</h1>
       <h1>App Content</h1>
       <Header/>

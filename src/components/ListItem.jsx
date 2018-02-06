@@ -13,6 +13,11 @@ function ListItem(props){ // requires "props" parameter to store incoming proper
   // the return is JSX that renders content
   return (
     <div style={listStyles}>
+      <style jsx>{`
+        li{
+          background-color: peachpuff;
+          list-style: none;
+        }`}</style>
       <h3>ListItem Content</h3>
       <ul>
         <li>Name: {props.names}</li>
