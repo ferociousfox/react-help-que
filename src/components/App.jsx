@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import NewItemForm from './NewItemForm';
 import Header from './Header';
 import List from './List';
+import Error404 from './Error404';
 import reactLogo from '../assets/images/react-logo.svg';
 
 function App(){ // the component is a function! the name is capitalized and matches the filename
@@ -25,6 +26,7 @@ function App(){ // the component is a function! the name is capitalized and matc
       <Switch>
         <Route exact path='/' component={List} />
         <Route path='/newitem' component={NewItemForm} />
+        <Route component={Error404} />
       </Switch>
     </div>
   );
