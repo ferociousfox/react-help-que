@@ -10,6 +10,14 @@ function ListItem(props){ // requires "props" parameter to store incoming proper
     padding: '20px',
     margin: '5px'
   };
+  let cssUl = {
+    padding: 15,
+    borderRadius: 30,
+    backgroundColor: 'honeydew'
+  };
+  let cssSpan = {
+    fontWeight: 900
+  };
   // the return is JSX that renders content
   return (
     <div style={css}>
@@ -20,10 +28,10 @@ function ListItem(props){ // requires "props" parameter to store incoming proper
           text-align: left;
         }`}</style>
       <h3>ListItem Content</h3>
-      <ul>
-        <li>Name: {props.names}</li>
-        <li>Number: {props.issue}</li>
-        <li>Location: {props.location}</li>
+      <ul style={cssUl}>
+        <li><span style={cssSpan}>Name:</span> {props.names}</li>
+        <li><span style={cssSpan}>Number:</span> {props.issue}</li>
+        <li><span style={cssSpan}>Location:</span> {props.location}</li>
       </ul>
     </div>
   );
