@@ -107,7 +107,7 @@ Callbacks fire whenever the state should be updated. onChange event on inputs wi
 Require a 'key' when iterating inside a .map().
 
 #### State
-If a component needs to alter data, that data must be stored in something called state; never a prop. We'll learn about state next week. But for now make sure your components never alter their props. Props are read-only! Components should only update their own state. To make your UI interactive, you need to be able to trigger changes to your underlying data model. React makes this easy with state.
+If a component needs to alter data, that data must be stored in something called state; never a prop. Props are read-only! Components should only update their own state. To make your UI interactive, you need to be able to trigger changes to your underlying data model. React makes this easy with state.
 State is never:
 * passed in from a parent via props
 * changes
