@@ -107,15 +107,16 @@ Callbacks fire whenever the state should be updated. onChange event on inputs wi
 Require a 'key' when iterating inside a .map().
 
 #### State
-If a component needs to alter data, that data must be stored in something called state; never a prop. Props are read-only! Components should only update their own state. To make your UI interactive, you need to be able to trigger changes to your underlying data model. React makes this easy with state.
-State is never:
+In React, state refers to the current condition and/or circumstance of a component or other relevant data. State is data in an application that is dynamic. If a component needs to alter data, that data must be stored in something called state, never a prop; Props are read-only! States are fluid and ever-changing, props are not. Components should only update their own state. To make your UI interactive, you need to be able to trigger changes to your underlying data model. React makes this easy with state.
+State is not:
+* static
 * passed in from a parent via props
-* changes
 * computed based on any other state or props in your component.
 State can be:
 * user input
 * info from APIs
 
+*Not all components are capable of possessing state!*
 
 ### Components
 Basic building blocks of React apps. Everything in React is a component.
@@ -124,6 +125,11 @@ Basic building blocks of React apps. Everything in React is a component.
 * The component function name always begins with a capital letter and matches the filename.
 * The function returns the JSX this component will render in the browser.
 * Components reside in their own file, and are exported as a module so other areas of the application may import it.
+
+#### Defining Components
+There are two ways to define a component:
+1. We can make a component by defining a function that returns JSX. These are called stateless functional components.
+1. We can also define a component class. These are called class components or class-based components. We haven't seen any of them yet.
 
 ### Entry Point
 In webpack.config.js, we declared index.jsx as our entry point responsible for loading our application. It does this by loading our parent component. The parent component, in turn, loads child components, which then load their child components, so on, and so forth. This entry point is a special type of file. It is not a component. (Notice its filename is not capitalized, either.) Its sole job is loading the parent component and only the parent component.
