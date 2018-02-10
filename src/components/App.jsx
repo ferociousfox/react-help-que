@@ -8,7 +8,7 @@ import reactLogo from '../assets/images/react-logo.svg';
 
 function App(){ // the component is a function! the name is capitalized and matches the filename
   let reactLogoStyle = {
-    width: 500
+    maxWidth: 500
   };
   return ( // the return is JSX that renders content
     <div>
