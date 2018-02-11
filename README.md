@@ -186,7 +186,9 @@ Callbacks fire whenever the state should be updated. onChange event on inputs wi
 Require a 'key' when iterating inside a .map().
 
 ### State
-In React, state refers to the current condition and/or circumstance of a component or other relevant data. State is data in an application that is dynamic. If a component needs to alter data, that data must be stored in something called state, never a prop; Props are read-only! States are fluid and ever-changing, props are not. Components should only update their own state. To make your UI interactive, you need to be able to trigger changes to your underlying data model. React makes this easy with state.
+In React, state refers to the current condition and/or circumstance of a component or other relevant data. State is data in an application that is dynamic. If a component needs to alter data, that data must be stored in something called state, never a prop; Props are read-only! States are fluid and ever-changing, props are not. Components should only update their own state. To make your UI interactive, you need to be able to trigger changes to your underlying data model.
+
+*Not all components are capable of possessing state!*
 
 State is not:
 * static
@@ -209,10 +211,8 @@ When we work with state that affects multiple components, we must find the compo
 ### Refs
 Identifier used to reference DOM elements, to collect information users place in form fields. Refs are added as input properties:
 ```
-ref={(input) => {_names = input;}}
+<input ref={(input) => {_names = input;}} />
 ```
-
-*Not all components are capable of possessing state!*
 
 ## Entry Point
 In webpack.config.js, we declared index.jsx as our entry point responsible for loading our application. It does this by loading our parent component. The parent component, in turn, loads child components, which then load their child components, so on, and so forth. This entry point is a special type of file. It is not a component. (Notice its filename is not capitalized, either.) Its sole job is loading the parent component and only the parent component.
