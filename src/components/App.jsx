@@ -1,6 +1,6 @@
 import React from 'react'; // always import core React library
 import { Switch, Route } from 'react-router-dom';
-import NewItemForm from './NewItemForm';
+import NewItemControl from './NewItemControl';
 import Header from './Header';
 import List from './List';
 import Error404 from './Error404';
@@ -25,7 +25,7 @@ function App(){ // the component is a function! the name is capitalized and matc
       <Header/>
       <Switch>
         <Route exact path='/' component={List} />
-        <Route path='/newitem' component={NewItemForm} />
+        <Route path='/newitem' component={NewItemControl} />
         <Route component={Error404} />
       </Switch>
     </div>

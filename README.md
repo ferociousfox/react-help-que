@@ -97,11 +97,16 @@ A component should ideally only do one thing. If it ends up growing, it should b
 
 __React functions cannot alter their props!__ This would break the second rule above. React components can only take their arguments (props), compose them together into a portion of the UI, and return the JSX results to be rendered.
 
-#### One-Way Data Flow
-React is all about one-way data flow down the component hierarchy, from the lowest common parent component. If you can’t find a component where it makes sense to own the state, create a new component simply for holding the state and add it somewhere in the hierarchy above the common owner component.
+#### Unidirectional Data Flow
+Commonly called a "top-down" or "unidirectional" data flow. Any state is always owned by some specific component, and any data or UI derived from that state can only affect components "below" them in the tree. React is all about one-way data flow down the component hierarchy, from the lowest common parent component. If you can’t find a component where it makes sense to own the state, create a new component simply for holding the state and add it somewhere in the hierarchy above the common owner component.
 
 #### Inverse Data Flow
 Callbacks fire whenever the state should be updated. onChange event on inputs will be notified of changes. The callbacks passed will call setState(), and the app will be updated.
+
+1. Define a callback function in the parent component where the state or data we want to alter resides. This function is responsible for doing something with data; like altering state to trigger UI updates.
+1. The parent component passes this function into the child component as a prop.
+1. The child component can access this method through its props, and call it at the relevant time (like when the Yes button is clicked, in our case).
+1. When the child executes the callback method from its props, the method in the parent component is invoked. Because the method resides in the parent class it has access to update the parent's state.
 
 #### Props
 Require a 'key' when iterating inside a .map().
@@ -128,8 +133,69 @@ Basic building blocks of React apps. Everything in React is a component.
 
 #### Defining Components
 There are two ways to define a component:
-1. We can make a component by defining a function that returns JSX. These are called stateless functional components.
-1. We can also define a component class. These are called class components or class-based components. We haven't seen any of them yet.
+1. by defining a function that returns JSX. These are called stateless functional components.
+1. by defining a component class. These are called class components or class-based components.
+
+*Besides being defined with different syntax, these two types of components work differently too: Functional components cannot have state. Components that require state must be defined as a class!*
+
+Functional Component (Stateless) Boilerplate:
+```
+import React from 'react';
+
+function ExampleFunctionalComponent(props){
+  return (
+    <div>
+      <h1>I am a standard functional component!</h1>
+      <p>Here are props I receive from my parent:</p>
+      <ul>
+        <li>{props.examplePropOne}</li>
+        <li>{props.examplePropTwo}</li>
+      </ul>
+    </div>
+  );
+}
+
+export default ExampleFunctionalComponent;
+```
+Class Component (Stateful) Boilerplate:
+```
+import React from 'react';
+
+class ExampleClassComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+    this.methodName = this.methodName.bind(this);
+  }
+
+  methodName() {}
+
+  render() {
+    return (
+      <div>
+        <h1>I am a stateful, class-based component!</h1>
+        <p>These are props sent by my parent component:</p>
+        <ul>
+          <li>{this.props.examplePropOne}</li>
+          <li>{this.props.examplePropTwo}</li>
+       </ul>
+     </div>
+    );
+  }
+}
+
+export default ExampleClassComponent;
+```
+* super(props); is called to access a parent class's constructor. Because the component class inherits the built in React.Component class, super accesses the React.Component constructor. This ensures our component is instantiated with all necessary React.Component functionality, plus our state data.
+* this.state = {}; is standard convention for declaring state in ES6 React classes.
+
+Class vs Functional:
+* Props can only be accessed by calling this.props.propName instead of props.propName.
+* Class-based components must include a render() method. The JSX returned by this method is what will be displayed in the browser.
+* The class must always extend from the built-in React.Component class to inherit component functionality from the React library.
+
+#### When to Use Class-Based Components
+Only define a component as a class if it absolutely requires state. If a component does not require state, it should always be a stateless functional component. Avoiding unnecessary use of state is an important rule in React. Always begin React projects using only stateless functional components. Then refactor select components into class-based components as it becomes necessary.
 
 ### Entry Point
 In webpack.config.js, we declared index.jsx as our entry point responsible for loading our application. It does this by loading our parent component. The parent component, in turn, loads child components, which then load their child components, so on, and so forth. This entry point is a special type of file. It is not a component. (Notice its filename is not capitalized, either.) Its sole job is loading the parent component and only the parent component.
