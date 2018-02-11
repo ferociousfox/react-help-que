@@ -23,6 +23,7 @@ Installation:
 * npm i react-router-dom@4.0.0 --save
 * npm i url-loader@0.6.2 --sav-dev
 * npm i file-loader@1.1.6 --sav-dev
+* npm i uuid@3.2.1
 
 ### .gitignore
 ```
@@ -110,7 +111,7 @@ There are two ways to define a component:
 
 *Besides being defined with different syntax, these two types of components work differently too: Functional components cannot have state. Components that require state must be defined as a class!*
 
-#### Class vs Functional:
+#### Functional vs Class-Based:
 * Props can only be accessed by calling this.props.propName instead of props.propName.
 * Class-based components must include a render() method. The JSX returned by this method is what will be displayed in the browser.
 * The class must always extend from the built-in React.Component class to inherit component functionality from the React library.
@@ -169,7 +170,15 @@ export default ExampleClassComponent;
 ### When to Use Class-Based Components
 Only define a component as a class if it absolutely requires state. If a component does not require state, it should always be a stateless functional component. Avoiding unnecessary use of state is an important rule in React. Always begin React projects using only stateless functional components. Then refactor select components into class-based components as it becomes necessary.
 
-__React functions cannot alter their props!__ This would break the second rule above. React components can only take their arguments (props), compose them together into a portion of the UI, and return the JSX results to be rendered.
+__React functions cannot alter their props!__ React components can only take their arguments (props), compose them together into a portion of the UI, and return the JSX results to be rendered.
+
+### Refactoring Functional Components into Class-Based Components
+1. Create an ES6 class with the same name that extends React.Component.
+1. Add a single empty method to it called render().
+1. Move the body of the function into the render() method.
+1. Replace any calls to props with this.props in the render() body. (And, calls to any event handlers should change from eventHandlerName to this.eventHandlerName).
+1. Delete the remaining empty function declaration.
+
 
 ### Unidirectional Data Flow
 Commonly called a "top-down" or "unidirectional" data flow. Any state is always owned by some specific component, and any data or UI derived from that state can only affect components "below" them in the tree. React is all about one-way data flow down the component hierarchy, from the lowest common parent component. If you can’t find a component where it makes sense to own the state, create a new component simply for holding the state and add it somewhere in the hierarchy above the common owner component.
@@ -183,7 +192,16 @@ The passing of information from a form component to the nearest parent component
 1. When the child executes the callback method from its props, the method in the parent component is invoked. Because the method resides in the parent class it has access to update the parent's state.
 
 ### Props
-Require a 'key' when iterating inside a .map().
+Passed to child component:
+
+via Nested Element Component:
+```
+<ComponentName propName={value} />
+```
+via Routed Element Component:
+```
+<Route path='/component' render={() => <ComponentName propName={this.state.property} />} />
+```
 
 ### State
 In React, state refers to the current condition and/or circumstance of a component or other relevant data. State is data in an application that is dynamic. If a component needs to alter data, that data must be stored in something called state, never a prop; Props are read-only! States are fluid and ever-changing, props are not. Components should only update their own state. To make your UI interactive, you need to be able to trigger changes to your underlying data model.
@@ -211,7 +229,8 @@ When we work with state that affects multiple components, we must find the compo
 ### Altering State with setState()
 State cannot be altered directly. We can only alter state using setState(), which only takes a key value pair.
 
-
+## Unique IDs (UUID) & Mapped Component Lists
+When multiple instances of the same component in the same spot occurs, unique keys are very important, because they allow React to differentiate between these similar components, and hone in on any that may need to be updated individually, instead of re-rendering them all.
 
 ## Input
 ### Refs
@@ -250,3 +269,6 @@ MyExampleComponent.propTypes = {
  * `exampleClassTypeProp: PropTypes.instanceOf(ExampleClassName)`
 * Enum: restricts variables to one value from a predefined set of constants:
  * `optionalEnum: PropTypes.oneOf(['ExampleClass', 'AnotherExampleClass'])`
+
+## Vocabulary
+* Reconciliation

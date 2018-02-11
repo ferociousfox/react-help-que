@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 function List(props){
   // the return is JSX that renders content
   // map takes an iterated item (object) from an array and corresponding index position
+  console.log(props.itemList);
   List.propTypes = {
     itemList: PropTypes.array
   }
@@ -18,7 +19,7 @@ function List(props){
           names={item.names}
           location={item.location}
           issue={item.issue}
-          key={index}/>
+          key={item.id}/>
       )}
     </div>
   );
