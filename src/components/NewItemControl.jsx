@@ -3,6 +3,7 @@
 import React from 'react';
 import ConfirmationQuestions from './ConfirmationQuestions';
 import NewItemForm from './NewItemForm';
+import PropTypes from 'prop-types';
 
 class NewItemControl extends React.Component {
 
@@ -21,7 +22,7 @@ class NewItemControl extends React.Component {
   render(){
     let currentlyVisibleContent = null;
     if (this.state.formVisibleOnPage){
-      currentlyVisibleContent = <NewItemForm />;
+      currentlyVisibleContent = <NewItemForm onNewItemCreation={this.props.onNewItemCreation}/>;
     } else {
       currentlyVisibleContent = <ConfirmationQuestions onTroubleshootingConfirmation={this.handleTroubleshootingConfirmation}/>;
     }
@@ -33,5 +34,9 @@ class NewItemControl extends React.Component {
     );
   }
 }
+
+NewItemControl.propTypes = {
+  onNewItemCreation: PropTypes.func
+};
 
 export default NewItemControl;

@@ -30,7 +30,7 @@ function ListItem(props){ // requires "props" parameter to store incoming proper
       <h3>ListItem Content</h3>
       <ul style={cssUl}>
         <li><span style={cssSpan}>Name:</span> {props.names}</li>
-        <li><span style={cssSpan}>Number:</span> {props.issue}</li>
+        <li><span style={cssSpan}>Issue:</span> {props.issue}</li>
         <li><span style={cssSpan}>Location:</span> {props.location}</li>
       </ul>
     </div>

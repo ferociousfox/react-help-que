@@ -1,18 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-function NewItemForm(){
+function NewItemForm(props){
   let _names = null;
   let _location = null;
   let _issue = null;
   function handleItemFormSubmission(event){
     event.preventDefault();
-    console.log(_names.value);
-    console.log(_location.value);
-    console.log(_issue.value);
+    props.onNewItemCreation({names: _names.value, location: _location.value, issue: _issue.value});
     _names.value = '';
     _location.value = '';
     _issue.value = '';
   }
+
+  NewItemForm.propTypes = {
+    onNewItemCreation: PropTypes.func
+  }
+
   return (
     <div>
       <form onSubmit={handleItemFormSubmission}>

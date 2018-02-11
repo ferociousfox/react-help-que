@@ -175,11 +175,11 @@ __React functions cannot alter their props!__ This would break the second rule a
 Commonly called a "top-down" or "unidirectional" data flow. Any state is always owned by some specific component, and any data or UI derived from that state can only affect components "below" them in the tree. React is all about one-way data flow down the component hierarchy, from the lowest common parent component. If you can’t find a component where it makes sense to own the state, create a new component simply for holding the state and add it somewhere in the hierarchy above the common owner component.
 
 ### Inverse Data Flow
-Callbacks fire whenever the state should be updated. onChange event on inputs will be notified of changes. The callbacks passed will call setState(), and the app will be updated.
+The passing of information from a form component to the nearest parent component with shared state. Callbacks fire whenever the state should be updated. onChange event on inputs will be notified of changes. The callbacks passed will call setState(), and the app will be updated.
 
-1. Define a callback function in the parent component where the state or data we want to alter resides. This function is responsible for doing something with data; like altering state to trigger UI updates.
+1. Define a callback function in the parent component where state or data should end up in.
 1. The parent component passes this function into the child component as a prop.
-1. The child component can access this method through its props, and call it at the relevant time (like when the Yes button is clicked, in our case).
+1. The child component can access this method through its props, and calls it at a relevant time.
 1. When the child executes the callback method from its props, the method in the parent component is invoked. Because the method resides in the parent class it has access to update the parent's state.
 
 ### Props
@@ -194,7 +194,8 @@ State is not:
 * static
 * passed in from a parent via props
 * computed based on any other state or props in your component.
-State can be:
+
+State is:
 * user input
 * info from APIs
 
@@ -206,6 +207,11 @@ Unlike local state, application state is shared and used throughout multiple com
 
 ### Lifting State
 When we work with state that affects multiple components, we must find the components' closest common parent, and pass the data up to that parent. This is called lifting state. The parent then passes the data down to any children that require it. Instead of always placing data at the very top of the component tree, we only place it as "high" as necessary. That is, the closest common ancestor of all components that need the application state data. This keeps React applications performant by ensuring data is only loaded in the areas that absolutely require it.
+
+### Altering State with setState()
+State cannot be altered directly. We can only alter state using setState(), which only takes a key value pair.
+
+
 
 ## Input
 ### Refs
