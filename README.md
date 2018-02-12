@@ -1,10 +1,10 @@
 # React Prototype
 ## Setup
-### terminal
-Atom React errors:
+### Terminal Installation
+Atom: (in case of React errors):
 * apm i react@0.16.2
 
-Installation:
+Node:
 * npm init  
 * npm i react@15.5.4 react-dom@15.5.4 --save  
 * npm i webpack@3.4.0 --save-dev  
