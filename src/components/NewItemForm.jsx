@@ -16,7 +16,7 @@ function NewItemForm(props){
 
   NewItemForm.propTypes = {
     onNewItemCreation: PropTypes.func
-  }
+  };
 
   return (
     <div>

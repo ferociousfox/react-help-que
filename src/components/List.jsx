@@ -9,12 +9,12 @@ function List(props){
   console.log(props.itemList);
   List.propTypes = {
     itemList: PropTypes.array
-  }
+  };
 
   return (
     <div>
       <hr/>
-      {props.itemList.map((item, index) =>
+      {props.itemList.map((item) =>
         <ListItem
           names={item.names}
           location={item.location}
