@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import NewItemControl from './NewItemControl';
 import Header from './Header';
 import List from './List';
+import Admin from './Admin';
 import Error404 from './Error404';
 import reactLogo from '../assets/images/react-logo.svg';
 import Moment from 'moment';
@@ -31,14 +32,14 @@ class App extends React.Component {
     console.log('check');
     let newMasterItemList = this.state.masterItemList.slice();
     newMasterItemList.forEach((item) =>
-      item.formattedWaitTime = (item.timeOpen).fromNow(true)
+      item.formattedWaitTime = item.timeOpen.fromNow(true)
     );
     this.setState({masterItemList: newMasterItemList})
   }
 
   handleAddingNewItemToList(newItem){
     let newMasterItemList = this.state.masterItemList.slice();
-    newItem.formattedWaitTime = (newItem.timeOpen).fromNow(true)
+    newItem.formattedWaitTime = newItem.timeOpen.fromNow(true)
     newMasterItemList.push(newItem);
     this.setState({masterItemList: newMasterItemList});
   }
@@ -63,6 +64,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/' render={() => <List itemList={this.state.masterItemList} />} />
           <Route path='/newitem' render={() => <NewItemControl onNewItemCreation={this.handleAddingNewItemToList} />} />
+          <Route path='/admin' render={(props) => <Admin itemList={this.state.masterItemList} currentRouterPath={props.location.pathname}/>} />
           <Route component={Error404} />
         </Switch>
       </div>
