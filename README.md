@@ -24,6 +24,7 @@ Node:
 * npm i url-loader@0.6.2 --sav-dev
 * npm i file-loader@1.1.6 --sav-dev
 * npm i uuid@3.2.1
+* npm i moment@2.18.1
 
 ### .gitignore
 ```

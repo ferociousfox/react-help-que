@@ -5,6 +5,7 @@ import Header from './Header';
 import List from './List';
 import Error404 from './Error404';
 import reactLogo from '../assets/images/react-logo.svg';
+import Moment from 'moment';
 
 class App extends React.Component {
   constructor(props){
@@ -15,8 +16,29 @@ class App extends React.Component {
     this.handleAddingNewItemToList = this.handleAddingNewItemToList.bind(this);
   }
 
+  componentDidMount(){
+    this.waitTimeUpdateTimer = setInterval(()=>
+      this.updateItemElapsedWaitTime(),
+      60000
+    );
+  }
+
+  componentWillUnmount(){
+    clearInterval(this.waitTimeUpdateTimer);
+  }
+
+  updateItemElapsedWaitTime() {
+    console.log('check');
+    let newMasterItemList = this.state.masterItemList.slice();
+    newMasterItemList.forEach((item) =>
+      item.formattedWaitTime = (item.timeOpen).fromNow(true)
+    );
+    this.setState({masterItemList: newMasterItemList})
+  }
+
   handleAddingNewItemToList(newItem){
     let newMasterItemList = this.state.masterItemList.slice();
+    newItem.formattedWaitTime = (newItem.timeOpen).fromNow(true)
     newMasterItemList.push(newItem);
     this.setState({masterItemList: newMasterItemList});
   }

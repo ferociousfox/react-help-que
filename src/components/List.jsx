@@ -19,6 +19,7 @@ function List(props){
           names={item.names}
           location={item.location}
           issue={item.issue}
+          formattedWaitTime={item.formattedWaitTime}
           key={item.id}/>
       )}
     </div>
