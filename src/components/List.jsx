@@ -17,6 +17,7 @@ function List(props){
           names={item.names}
           location={item.location}
           issue={item.issue}
+          keg={item.keg}
           formattedWaitTime={item.formattedWaitTime}
           currentRouterPath={props.currentRouterPath}
           onItemSelection={props.onItemSelection}

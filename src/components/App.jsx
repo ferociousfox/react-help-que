@@ -18,6 +18,7 @@ class App extends React.Component {
     };
     this.handleAddingNewItemToList = this.handleAddingNewItemToList.bind(this);
     this.handleChangingSelectedItem = this.handleChangingSelectedItem.bind(this);
+    this.handleDeletingItem = this.handleDeletingItem.bind(this);
   }
 
   componentDidMount(){
@@ -39,6 +40,13 @@ class App extends React.Component {
     this.setState({masterItemList: newMasterItemList});
   }
 
+  handleDeletingItem(itemId){
+    let newMasterItemList = Object.assign({}, this.state.masterItemList);
+    delete newMasterItemList[itemId];
+    this.setState({masterItemList: newMasterItemList});
+
+
+  }
   handleAddingNewItemToList(newItem){
     let newItemId = v4();
     let newMasterItemList = Object.assign({}, this.state.masterItemList, {
@@ -83,6 +91,7 @@ class App extends React.Component {
               itemList={this.state.masterItemList}
               currentRouterPath={props.location.pathname}
               onItemSelection={this.handleChangingSelectedItem}
+              onItemDelete={this.handleDeletingItem}
               selectedItem={this.state.selectedItem}/>} />
 
           <Route component={Error404} />

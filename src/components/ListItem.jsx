@@ -32,12 +32,13 @@ function ListItem(props){ // requires "props" parameter to store incoming proper
         <li><em>{props.formattedWaitTime}</em></li>
         <li><span style={cssSpan}>Name:</span> {props.names}</li>
         <li><span style={cssSpan}>Location:</span> {props.location}</li>
+        <li>{props.keg}</li>
       </ul>
     </div>;
 
   // the return is JSX that renders content
   if (props.currentRouterPath === '/admin'){
-    //try removing the curly brace
+    //try removing the curly brace, it works still.
     return(
       <div onClick={() => {props.onItemSelection(props.itemId);}}>
         {itemInfo}
@@ -56,6 +57,7 @@ ListItem.propTypes = {
   names: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
   issue: PropTypes.string,
+  keg: PropTypes.number,
   formattedWaitTime: PropTypes.string.isRequired,
   currentRouterPath: PropTypes.string,
   onItemSelection: PropTypes.func,
