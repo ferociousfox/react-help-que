@@ -20,7 +20,9 @@ function List(props){
           location={item.location}
           issue={item.issue}
           formattedWaitTime={item.formattedWaitTime}
-          key={item.id}/>
+          currentRouterPath={props.currentRouterPath}
+          key={item.id}
+          onItemSelection={props.onItemSelection} />
       )}
     </div>
   );

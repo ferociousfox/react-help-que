@@ -12,9 +12,11 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      masterItemList: []
+      masterItemList: [],
+      selectedItem: null
     };
     this.handleAddingNewItemToList = this.handleAddingNewItemToList.bind(this);
+    this.handleChangingSelectedItem = this.handleChangingSelectedItem.bind(this);
   }
 
   componentDidMount(){
@@ -44,6 +46,10 @@ class App extends React.Component {
     this.setState({masterItemList: newMasterItemList});
   }
 
+  handleChangingSelectedItem(item){
+    this.setState({selectedItem: item});
+    alert('Selected Item: ' + this.state.selectedItem.names);
+  }
   render(){
     let reactLogoStyle = {
       maxWidth: 300
@@ -62,9 +68,18 @@ class App extends React.Component {
         <h1>App Content</h1>
         <Header/>
         <Switch>
-          <Route exact path='/' render={() => <List itemList={this.state.masterItemList} />} />
-          <Route path='/newitem' render={() => <NewItemControl onNewItemCreation={this.handleAddingNewItemToList} />} />
-          <Route path='/admin' render={(props) => <Admin itemList={this.state.masterItemList} currentRouterPath={props.location.pathname}/>} />
+          <Route exact path='/' render={() =>
+              <List itemList={this.state.masterItemList} />} />
+
+          <Route path='/newitem' render={() =>
+              <NewItemControl
+                onNewItemCreation={this.handleAddingNewItemToList} />} />
+
+          <Route path='/admin' render={(props) =>
+              <Admin 
+                itemList={this.state.masterItemList} currentRouterPath={props.location.pathname} onItemSelection={this.handleChangingSelectedItem}
+                selectedItem={this.state.selectedItem}/>} />
+
           <Route component={Error404} />
         </Switch>
       </div>

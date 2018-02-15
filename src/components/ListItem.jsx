@@ -18,15 +18,15 @@ function ListItem(props){ // requires "props" parameter to store incoming proper
   let cssSpan = {
     fontWeight: 900
   };
-  // the return is JSX that renders content
-  return (
+  const itemInfo =
     <div style={css}>
       <style jsx>{`
         li{
           background-color: peachpuff;
           list-style: none;
           text-align: left;
-        }`}</style>
+        }
+    `}</style>
       <h3>ListItem Content</h3>
       <ul style={cssUl}>
         <li><em>{props.formattedWaitTime}</em></li>
@@ -34,16 +34,38 @@ function ListItem(props){ // requires "props" parameter to store incoming proper
         <li><span style={cssSpan}>Issue:</span> {props.issue}</li>
         <li><span style={cssSpan}>Location:</span> {props.location}</li>
       </ul>
-    </div>
-  );
-}
+    </div>;
 
+  // the return is JSX that renders content
+  if (props.currentRouterPath === '/admin'){
+    return(
+      <div onClick={() =>
+          {props.onItemSelection({
+            names: props.name,
+            issue: props.issue,
+            location: props.location,
+            formattedWaitTime: props.formattedWaitTime
+          });}
+        }>
+        {itemInfo}
+      </div>
+    );
+  } else { // YA GOTTA WRAP THE RETURN IN A DIV, YOU JUST GOTTA
+    return (
+      <div>
+        {itemInfo}
+      </div>
+    );
+  }
+}
 // import PropTypes at top, then attach propTypes as property to function with an object that has key value pairs for checking types
 ListItem.propTypes = {
-  names: PropTypes.string,
-  issue: PropTypes.string.isRequired, // this property is required
-  location: PropTypes.string,
-  formattedWaitTime: PropTypes.string.isRequired
+  names: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired,
+  issue: PropTypes.string,
+  formattedWaitTime: PropTypes.string.isRequired,
+  currentRouterPath: PropTypes.string,
+  onItemSelection: PropTypes.func
 };
 
 export default ListItem;
