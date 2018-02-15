@@ -48,8 +48,8 @@ class App extends React.Component {
 
   handleChangingSelectedItem(item){
     this.setState({selectedItem: item});
-    alert('Selected Item: ' + this.state.selectedItem.names);
   }
+  
   render(){
     let reactLogoStyle = {
       maxWidth: 300
@@ -76,7 +76,7 @@ class App extends React.Component {
                 onNewItemCreation={this.handleAddingNewItemToList} />} />
 
           <Route path='/admin' render={(props) =>
-              <Admin 
+              <Admin
                 itemList={this.state.masterItemList} currentRouterPath={props.location.pathname} onItemSelection={this.handleChangingSelectedItem}
                 selectedItem={this.state.selectedItem}/>} />
 

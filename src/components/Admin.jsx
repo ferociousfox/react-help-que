@@ -7,7 +7,7 @@ function Admin(props){
   console.log(props.currentRouterPath);
   let optionalSelecedItemContent = null;
   if (props.selectedItem != null){
-    optionalSelecedItemContent = <ListItemDetail />;
+    optionalSelecedItemContent = <ListItemDetail selectedItem={props.selectedItem} />;
   }
   return(
     <div>

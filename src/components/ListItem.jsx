@@ -31,7 +31,6 @@ function ListItem(props){ // requires "props" parameter to store incoming proper
       <ul style={cssUl}>
         <li><em>{props.formattedWaitTime}</em></li>
         <li><span style={cssSpan}>Name:</span> {props.names}</li>
-        <li><span style={cssSpan}>Issue:</span> {props.issue}</li>
         <li><span style={cssSpan}>Location:</span> {props.location}</li>
       </ul>
     </div>;
@@ -41,7 +40,7 @@ function ListItem(props){ // requires "props" parameter to store incoming proper
     return(
       <div onClick={() =>
           {props.onItemSelection({
-            names: props.name,
+            names: props.names,
             issue: props.issue,
             location: props.location,
             formattedWaitTime: props.formattedWaitTime
