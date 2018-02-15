@@ -11,24 +11,27 @@ function List(props){
   return (
     <div>
       <hr/>
-      {Object.keys(props.itemList).map((itemId) =>
+      {Object.keys(props.itemList).map((itemId) => {
         let item = props.itemList[itemId];
-          return <ListItem
+        return <ListItem
           names={item.names}
           location={item.location}
           issue={item.issue}
           formattedWaitTime={item.formattedWaitTime}
           currentRouterPath={props.currentRouterPath}
-          key={item.id}
           onItemSelection={props.onItemSelection}
-          itemId={item.id} />
-      )}
+          itemId={itemId}
+          key={itemId}
+        />;
+      })}
     </div>
   );
 }
 
 List.propTypes = {
-  itemList: PropTypes.object
+  itemList: PropTypes.object,
+  onItemSelection: PropTypes.func,
+  currentRouterPath: PropTypes.string
 };
 
 export default List;

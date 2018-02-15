@@ -1,12 +1,13 @@
 import React from 'react'; // always import core React library
 import { Switch, Route } from 'react-router-dom';
+import { v4 } from 'uuid';
 import NewItemControl from './NewItemControl';
 import Header from './Header';
 import List from './List';
 import Admin from './Admin';
 import Error404 from './Error404';
 import reactLogo from '../assets/images/react-logo.svg';
-import Moment from 'moment';
+// import Moment from 'moment';
 
 class App extends React.Component {
   constructor(props){
@@ -22,7 +23,7 @@ class App extends React.Component {
   componentDidMount(){
     this.waitTimeUpdateTimer = setInterval(()=>
       this.updateItemElapsedWaitTime(),
-      60000
+    60000
     );
   }
 
@@ -32,17 +33,18 @@ class App extends React.Component {
 
   updateItemElapsedWaitTime() {
     let newMasterItemList = Object.assign({}, this.state.masterItemList);
-    Object.keys(newMasterItemList).forEach(item =>
-      newMasterItemList[itemId].formattedWaitTime = newMasterItemList[itemId].timeOpen).fromNow(true);
-    });
-    this.setState({masterItemList: newMasterItemList})
+    Object.keys(newMasterItemList).forEach(itemId =>
+      newMasterItemList[itemId].formattedWaitTime = newMasterItemList[itemId].timeOpen.fromNow(true)
+    );
+    this.setState({masterItemList: newMasterItemList});
   }
 
   handleAddingNewItemToList(newItem){
+    let newItemId = v4();
     let newMasterItemList = Object.assign({}, this.state.masterItemList, {
-      [newItem.id]: newItem
+      [newItemId]: newItem
     });
-    newMasterItemList[newItem.id].formattedWaitTime = newMasterItemList[newItem.id].timeOpen.fromNow(true);
+    newMasterItemList[newItemId].formattedWaitTime = newMasterItemList[newItemId].timeOpen.fromNow(true);
     this.setState({masterItemList: newMasterItemList});
   }
 
@@ -51,6 +53,7 @@ class App extends React.Component {
   }
 
   render(){
+    console.log(this.state.masterItemList);
     let reactLogoStyle = {
       maxWidth: 300
     };
@@ -69,16 +72,18 @@ class App extends React.Component {
         <Header/>
         <Switch>
           <Route exact path='/' render={() =>
-              <List itemList={this.state.masterItemList} />} />
+            <List itemList={this.state.masterItemList} />} />
 
           <Route path='/newitem' render={() =>
-              <NewItemControl
-                onNewItemCreation={this.handleAddingNewItemToList} />} />
+            <NewItemControl
+              onNewItemCreation={this.handleAddingNewItemToList} />} />
 
           <Route path='/admin' render={(props) =>
-              <Admin
-                itemList={this.state.masterItemList} currentRouterPath={props.location.pathname} onItemSelection={this.handleChangingSelectedItem}
-                selectedItem={this.state.selectedItem}/>} />
+            <Admin
+              itemList={this.state.masterItemList}
+              currentRouterPath={props.location.pathname}
+              onItemSelection={this.handleChangingSelectedItem}
+              selectedItem={this.state.selectedItem}/>} />
 
           <Route component={Error404} />
         </Switch>
