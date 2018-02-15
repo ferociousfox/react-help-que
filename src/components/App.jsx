@@ -12,7 +12,7 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      masterItemList: [],
+      masterItemList: {},
       selectedItem: null
     };
     this.handleAddingNewItemToList = this.handleAddingNewItemToList.bind(this);
@@ -31,25 +31,25 @@ class App extends React.Component {
   }
 
   updateItemElapsedWaitTime() {
-    console.log('check');
-    let newMasterItemList = this.state.masterItemList.slice();
-    newMasterItemList.forEach((item) =>
-      item.formattedWaitTime = item.timeOpen.fromNow(true)
-    );
+    let newMasterItemList = Object.assign({}, this.state.masterItemList);
+    Object.keys(newMasterItemList).forEach(item =>
+      newMasterItemList[itemId].formattedWaitTime = newMasterItemList[itemId].timeOpen).fromNow(true);
+    });
     this.setState({masterItemList: newMasterItemList})
   }
 
   handleAddingNewItemToList(newItem){
-    let newMasterItemList = this.state.masterItemList.slice();
-    newItem.formattedWaitTime = newItem.timeOpen.fromNow(true)
-    newMasterItemList.push(newItem);
+    let newMasterItemList = Object.assign({}, this.state.masterItemList, {
+      [newItem.id]: newItem
+    });
+    newMasterItemList[newItem.id].formattedWaitTime = newMasterItemList[newItem.id].timeOpen.fromNow(true);
     this.setState({masterItemList: newMasterItemList});
   }
 
-  handleChangingSelectedItem(item){
-    this.setState({selectedItem: item});
+  handleChangingSelectedItem(itemId){
+    this.setState({selectedItem: itemId});
   }
-  
+
   render(){
     let reactLogoStyle = {
       maxWidth: 300

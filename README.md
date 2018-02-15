@@ -127,11 +127,14 @@ function ExampleFunctionalComponent(props){
       <h1>I am a standard functional component!</h1>
       <p>Here are props I receive from my parent:</p>
       <ul>
-        <li>{props.examplePropOne}</li>
-        <li>{props.examplePropTwo}</li>
+        <li>{props.exampleProp}</li>
       </ul>
     </div>
   );
+}
+
+ExampleFunctionalComponent.propTypes = {
+  propName: PropTypes.string.isRequired
 }
 
 export default ExampleFunctionalComponent;
@@ -155,12 +158,15 @@ class ExampleClassComponent extends React.Component {
         <h1>I am a stateful, class-based component!</h1>
         <p>These are props sent by my parent component:</p>
         <ul>
-          <li>{this.props.examplePropOne}</li>
-          <li>{this.props.examplePropTwo}</li>
+          <li>{this.props.exampleProp}</li>
        </ul>
      </div>
     );
   }
+}
+
+ExampleClassComponent.propTypes = {
+  propName: PropTypes.string.isRequired
 }
 
 export default ExampleClassComponent;

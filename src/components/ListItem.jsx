@@ -38,14 +38,7 @@ function ListItem(props){ // requires "props" parameter to store incoming proper
   // the return is JSX that renders content
   if (props.currentRouterPath === '/admin'){
     return(
-      <div onClick={() =>
-          {props.onItemSelection({
-            names: props.names,
-            issue: props.issue,
-            location: props.location,
-            formattedWaitTime: props.formattedWaitTime
-          });}
-        }>
+      <div onClick={() => {props.onItemSelection(props.itemId);}}>
         {itemInfo}
       </div>
     );
@@ -64,7 +57,8 @@ ListItem.propTypes = {
   issue: PropTypes.string,
   formattedWaitTime: PropTypes.string.isRequired,
   currentRouterPath: PropTypes.string,
-  onItemSelection: PropTypes.func
+  onItemSelection: PropTypes.func,
+  itemId: PropTypes.string.isRequired
 };
 
 export default ListItem;

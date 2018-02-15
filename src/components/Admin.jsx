@@ -7,7 +7,7 @@ function Admin(props){
   console.log(props.currentRouterPath);
   let optionalSelecedItemContent = null;
   if (props.selectedItem != null){
-    optionalSelecedItemContent = <ListItemDetail selectedItem={props.selectedItem} />;
+    optionalSelecedItemContent = <ListItemDetail selectedItem={props.itemList[prop.selectedItem]} />;
   }
   return(
     <div>
@@ -26,7 +26,7 @@ Admin.propTypes = {
   itemList: PropTypes.array,
   currentRouterPath: PropTypes.string,
   onItemSelection: PropTypes.func.isRequired,
-  selectedItem: PropTypes.object
+  selectedItem: PropTypes.string
 };
 
 export default Admin;

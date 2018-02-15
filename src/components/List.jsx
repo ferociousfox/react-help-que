@@ -7,25 +7,28 @@ function List(props){
   // the return is JSX that renders content
   // map takes an iterated item (object) from an array and corresponding index position
   console.log(props.itemList);
-  List.propTypes = {
-    itemList: PropTypes.array
-  };
 
   return (
     <div>
       <hr/>
-      {props.itemList.map((item) =>
-        <ListItem
+      {Object.keys(props.itemList).map((itemId) =>
+        let item = props.itemList[itemId];
+          return <ListItem
           names={item.names}
           location={item.location}
           issue={item.issue}
           formattedWaitTime={item.formattedWaitTime}
           currentRouterPath={props.currentRouterPath}
           key={item.id}
-          onItemSelection={props.onItemSelection} />
+          onItemSelection={props.onItemSelection}
+          itemId={item.id} />
       )}
     </div>
   );
 }
+
+List.propTypes = {
+  itemList: PropTypes.object
+};
 
 export default List;
